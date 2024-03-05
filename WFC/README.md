@@ -1,1 +1,1 @@
-Wave function collapse prototype for mateix procedural generation
+Wave function collapse prototype for matrix procedural generation
