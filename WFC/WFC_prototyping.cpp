@@ -227,7 +227,7 @@ bool wfc_mapping::prop_unstuck(data_type upd_val){
 ///////////////////////////////////////////
 //entropy recalc entropy where balid super positions are changed
 std::pair<int, int> wfc_mapping::entropy(){
-	//go thru prop_set and recalc entropy for each index, push back min values or where value = current back. and if val > do abswap on back with value, then swap back with being and finally push_back old back so back always has min value
+	//go thru prop_set and recalc entropy for each index, push back values to 2D vector depending on state of 2D vectoe
 	
 		//return -1,-1 if entropy list is still empty at end. either propagation failed or wfc is complete. else return random min value of entropy set
 	if(entropy_list.empty() && max_collapse_count == 0){//catch last collapse on col_count-- each collapse
