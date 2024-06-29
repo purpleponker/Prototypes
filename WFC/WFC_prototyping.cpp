@@ -9,6 +9,15 @@
 #include <cmath>
 /*
 to do:
+-refactor so everything not in one file
+
+- change the containter types so a list of uncollapsed indecies is populated as a hash map in the constructor and deleted an index
+from the hash made when it is collapsed. Keep a list of adjacent indecies from collapsed indecies for next collapse and entropy
+recalc
+
+- change superposition multiset to a hash map and erase values when region finished, repoluation the super position when full
+loop and region collapses finishes
+
 - minor bug with collapse count on duolicate data regions > 1. yields uneven dispersal of data types. typically sets of two types share the offset.
 
 -clean up debug code
@@ -19,7 +28,6 @@ to do:
 doing this will remove the strange sparcity of the last region fill being so spread out. in this last fill just populate the
 remaining uncollapsed tiles with any collapsed adjecent tile use a while loop untill no tiles remain in uncollapsed list
 
--review container structures and optimize for efficiancy
 */
 
 enum data_type : int{
