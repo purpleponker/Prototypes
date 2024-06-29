@@ -15,6 +15,12 @@ to do:
 
 -try using is changed flag to increase computation efficiency
 
+-change region size so that after filling all regions from all loops there are exactly 1 region worth of tiles remaining to file,
+doing this will remove the strange sparcity of the last region fill being so spread out. in this last fill just populate the
+remaining uncollapsed tiles with any collapsed adjecent tile
+
+use a while loop untill no tiles remain in uncollapsed list
+
 */
 
 enum data_type : int{
