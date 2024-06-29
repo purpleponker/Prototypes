@@ -17,10 +17,9 @@ to do:
 
 -change region size so that after filling all regions from all loops there are exactly 1 region worth of tiles remaining to file,
 doing this will remove the strange sparcity of the last region fill being so spread out. in this last fill just populate the
-remaining uncollapsed tiles with any collapsed adjecent tile
+remaining uncollapsed tiles with any collapsed adjecent tile use a while loop untill no tiles remain in uncollapsed list
 
-use a while loop untill no tiles remain in uncollapsed list
-
+-review container structures and optimize for efficiancy
 */
 
 enum data_type : int{
