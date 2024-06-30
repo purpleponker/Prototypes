@@ -7,6 +7,7 @@
 #include <time.h>
 #include <iterator>
 #include <cmath>
+#include <unordered_map>
 
 //enumeration of data types for super position values
 enum data_type : int{
@@ -75,7 +76,10 @@ class wfc_mapping{
 	//add indecies in propagation func call, has indecies which need entropy recalc
 	std::vector<std::pair<int,int>> prop_set;
 	//list of all indecies with smallest entropy value at back. in future use another var to track when a region finish populating so 2 of the same region not adjacent to each other. add indecies greater than back to begin. can sort them later as needed when vector is size 1
-	std::vector<std::vector<std::pair<int, int>>> entropy_list;
+	std::vector<std::pair<int, int>> entropy_list;
+
+    //map of uncollapsed indecies
+    std::unordered_map<std::pair<int,int>, std::string> uncollapsed;
 	
 	//remove a data type from set once the count reaches max size
 	std::multiset<data_type> loop_history;

@@ -2,16 +2,12 @@
 
 /*
 to do:
--refactor so everything not in one file
-
 - change the containter types so a list of uncollapsed indecies is populated as a hash map in the constructor and deleted an index
 from the hash made when it is collapsed. Keep a list of adjacent indecies from collapsed indecies for next collapse and entropy
 recalc
 
-- change superposition multiset to a hash map and erase values when region finished, repoluation the super position when full
-loop and region collapses finishes
-
-- minor bug with collapse count on duolicate data regions > 1. yields uneven dispersal of data types. typically sets of two types share the offset.
+- consider changing superposition multiset to a hash map and erase values when region finished, repoluation the super position when full
+loop and region collapses finishes.
 
 -clean up debug code
 
@@ -45,6 +41,7 @@ wfc_mapping::wfc_mapping(){
 		for(int j = 0; j < cols; j++){
 			wave_matrix[i][j] = {def_val};
 			bitmap[i][j] = end_data_type;
+            uncollapsed[std::make_pair(i,j)] = "valid";
 		}
 	}
 }
@@ -83,13 +80,11 @@ void wfc_mapping::display(){
 	int level = 0;
 	for(auto i : entropy_list){
 		std::cout << "matrix level: " << level << std::endl;
-		for(auto j : i){
-			std::cout << "index: " << j.first << "," << j.second <<":" <<wave_matrix[j.first][j.second].shan_entropy << ", superpositions: ";
-			for(auto k : wave_matrix[j.first][j.second].superpositions){
-				std::cout << data[k];
-			}
+        std::cout << "index: " << i.first << "," << i.second <<":" <<wave_matrix[i.first][i.second].shan_entropy << ", superpositions: ";
+        for(auto k : wave_matrix[i.first][i.second].superpositions){
+            std::cout << data[k];
+        }
 			std::cout << std::endl;
-		}
 		std::cout << std::endl;
 		level++;
 	}	

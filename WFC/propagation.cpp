@@ -64,7 +64,7 @@ bool wfc_mapping::prop_unstuck(data_type upd_val){
 	if(entropy_list.empty())
 		return false;
 	//could find a better optimized solution
-	for(auto it : entropy_list.back()){
+	for(auto it : entropy_list){
 		wave_matrix[it.first][it.second].superpositions.clear();
 		wave_matrix[it.first][it.second].superpositions.insert(upd_val);
 	}
