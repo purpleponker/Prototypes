@@ -16,9 +16,9 @@ bool wfc_mapping::collapse(int row, int col){
 	wave_matrix[row][col].is_changed = false;
 	wave_matrix[row][col].collapse_val = (*val);
 	wave_matrix[row][col].superpositions.clear();
-	 bitmap[row][col] = (*val);
-	 max_collapse_count -= 1;
-	 collapse_count += 1;
+	bitmap[row][col] = (*val);
+	max_collapse_count -= 1;
+	collapse_count += 1;
 	
 	return true;
 }
