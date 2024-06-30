@@ -79,7 +79,7 @@ class wfc_mapping{
 	std::vector<std::pair<int, int>> entropy_list;
 
     //map of uncollapsed indecies
-    std::unordered_map<std::pair<int,int>, std::string> uncollapsed;
+    std::unordered_map<std::pair<int,int>, std::string> uncollapsed = {};
 	
 	//remove a data type from set once the count reaches max size
 	std::multiset<data_type> loop_history;

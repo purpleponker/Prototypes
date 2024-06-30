@@ -41,7 +41,7 @@ wfc_mapping::wfc_mapping(){
 		for(int j = 0; j < cols; j++){
 			wave_matrix[i][j] = {def_val};
 			bitmap[i][j] = end_data_type;
-            uncollapsed[std::make_pair(i,j)] = "valid";
+            //uncollapsed.insert({std::make_pair(i,j), "valid"});
 		}
 	}
 }
