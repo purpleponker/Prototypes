@@ -17,7 +17,7 @@ bool wfc_mapping::collapse(int row, int col){
 	wave_matrix[row][col].collapse_val = (*val);
 	wave_matrix[row][col].superpositions.clear();
 	bitmap[row][col] = (*val);
-    uncollapsed.erase(std::make_pair(row,col));
+    //uncollapsed.erase(std::make_pair(row,col));
 	max_collapse_count -= 1;
 	collapse_count += 1;
 	

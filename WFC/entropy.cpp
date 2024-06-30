@@ -92,7 +92,37 @@ std::pair<int, int> wfc_mapping::entropy(){
 
 //entropy over region when size of collapses = max count
 std::pair <int,int> wfc_mapping::region_ent(){
-	
+	std::sort(entropy_list.begin(), entropy_list.end());
+	std::pair<int,int> next_reg;
+	if(uncollapsed.empty()){
+		next_reg.first = -1;
+		next_reg.second = -1;
+	}
+	//get min value entropy or select from pool of duplicate minimum values
+	//check if more than 1 element in list, 1 element is size 2 including /null terminating element
+	if(entropy_list.size() > 2){
+		//pool min value elements into vector and select rand element
+		int i = entropy_list.size() - 1;
+		int j = entropy_list.size() -2;
+		next_reg.first = entropy_list.back().first;
+		next_reg.second = entropy_list.back().second;
+		std::vector<std::pair<int,int>> next_reg_list;
+		next_reg_list.push_back(next_reg);
+		while(wave_matrix[entropy_list[i].first][entropy_list[i].second].shan_entropy == wave_matrix[entropy_list[j].first]
+		[entropy_list[j].second].shan_entropy){
+			next_reg.first=entropy_list[j].first;
+			next_reg.second=entropy_list[j].second;
+			next_reg_list.push_back(next_reg);
+		}
+		int rand_sel = rand() % next_reg_list.size();
+		next_reg.first = next_reg_list[rand_sel].first;
+		next_reg.second = next_reg_list[rand_sel].second;
+	}
+	else{
+		next_reg.first = entropy_list.back().first;
+		next_reg.second = entropy_list.back().second;
+	}
+	return next_reg;
 }
 
 //entropy formula calc entropy value for a goven index
